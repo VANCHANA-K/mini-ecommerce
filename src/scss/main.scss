@@ -1,0 +1,10 @@
+// 🎨 Main SCSS Entry Point
+// Combines all SCSS partials for the application
+
+@forward 'variables';
+@forward 'mixins'; 
+@forward 'theme';
+
+// Re-export for easier imports in components
+@use 'variables' as *;
+@use 'mixins' as *;

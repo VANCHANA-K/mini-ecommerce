@@ -1,0 +1,63 @@
+<div class="login-container">
+  <div class="login-card">
+    <div class="login-header">
+      <h2>🔑 เข้าสู่ระบบ</h2>
+      <p>ยินดีต้อนรับกลับสู่ Mini E-Commerce</p>
+    </div>
+
+    <form [formGroup]="form" (ngSubmit)="submit()" class="login-form">
+      <div class="form-group">
+        <label for="username">ชื่อผู้ใช้</label>
+        <input 
+          id="username"
+          type="text" 
+          formControlName="username" 
+          placeholder="กรอกชื่อผู้ใช้"
+          [class.error]="username?.invalid && username?.touched"
+        />
+        <div class="error-message" *ngIf="username?.invalid && username?.touched">
+          <span *ngIf="username?.errors?.['required']">กรุณากรอกชื่อผู้ใช้</span>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="password">รหัสผ่าน</label>
+        <input 
+          id="password"
+          type="password" 
+          formControlName="password" 
+          placeholder="กรอกรหัสผ่าน"
+          [class.error]="password?.invalid && password?.touched"
+        />
+        <div class="error-message" *ngIf="password?.invalid && password?.touched">
+          <span *ngIf="password?.errors?.['required']">กรุณากรอกรหัสผ่าน</span>
+          <span *ngIf="password?.errors?.['minlength']">รหัสผ่านต้องมีอย่างน้อย 3 ตัวอักษร</span>
+        </div>
+      </div>
+
+      <div class="demo-credentials">
+        <p><strong>🧪 ข้อมูลทดสอบ:</strong></p>
+        <p>ชื่อผู้ใช้: mor_2314</p>
+        <p>รหัสผ่าน: 83r5^_</p>
+      </div>
+
+      <button 
+        type="submit" 
+        class="btn-login"
+        [disabled]="loading"
+      >
+        <span *ngIf="!loading">เข้าสู่ระบบ</span>
+        <span *ngIf="loading">🔄 กำลังเข้าสู่ระบบ...</span>
+      </button>
+
+      <div class="error-alert" *ngIf="error">
+        ❌ {{ error }}
+      </div>
+    </form>
+
+    <div class="login-footer">
+      <p>ยังไม่มีบัญชี? <a routerLink="/register">สมัครสมาชิก</a></p>
+      <p><a routerLink="/">← กลับหน้าหลัก</a></p>
+    </div>
+  </div>
+</div>

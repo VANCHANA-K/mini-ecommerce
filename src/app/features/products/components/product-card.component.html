@@ -1,0 +1,39 @@
+<div class="product-card">
+  <button 
+    class="favorite-btn" 
+    (click)="toggleFavorite()"
+    [class.active]="isFavorite"
+    title="{{ isFavorite ? 'Remove from favorites' : 'Add to favorites' }}">
+    {{ isFavorite ? '❤️' : '🤍' }}
+  </button>
+  
+  <div class="product-image">
+    <img [src]="product.image" [alt]="product.title" />
+  </div>
+  <div class="product-content">
+    <h3 class="product-title">{{ product.title }}</h3>
+    <div class="product-price">${{ product.price | number:'1.2-2' }}</div>
+    <div class="product-rating">
+      <span class="stars">★</span>
+      <span class="rating-text">{{ product.rating.rate }}/5 ({{ product.rating.count }})</span>
+    </div>
+    
+    <div class="cart-actions">
+      <button 
+        class="add-to-cart-btn" 
+        (click)="addToCart()"
+        [class.in-cart]="isInCart">
+        @if (isInCart) {
+          <span class="cart-indicator">
+            <span class="cart-icon">🛒</span>
+            <span class="quantity">{{ cartQuantity }}</span>
+          </span>
+          Add More
+        } @else {
+          <span class="cart-icon">🛒</span>
+          Add to Cart
+        }
+      </button>
+    </div>
+  </div>
+</div>

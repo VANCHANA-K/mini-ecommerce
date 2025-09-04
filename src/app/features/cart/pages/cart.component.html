@@ -1,0 +1,97 @@
+<div class="cart-container">
+  <div class="cart-header">
+    <h1>🛒 ตะกร้าสินค้า</h1>
+    <div class="cart-summary">
+      <span class="item-count">{{ cartService.itemCount }} รายการ</span>
+    </div>
+  </div>
+
+  @if (cartService.items.length === 0) {
+    <div class="empty-cart">
+      <div class="empty-icon">🛒</div>
+      <h2>ตะกร้าสินค้าของคุณว่างเปล่า</h2>
+      <p>ไปเลือกซื้อสินค้ากันเถอะ!</p>
+      <button class="continue-shopping-btn" routerLink="/products">
+        🛍️ เริ่มช้อปปิ้ง
+      </button>
+    </div>
+  } @else {
+    <div class="cart-content">
+      <div class="cart-items">
+        @for (item of cartService.items; track item.product.id) {
+          <div class="cart-item">
+            <div class="item-image">
+              <img [src]="item.product.image" [alt]="item.product.title" />
+            </div>
+            
+            <div class="item-details">
+              <h3 class="item-title">{{ item.product.title }}</h3>
+              <div class="item-category">{{ item.product.category }}</div>
+              <div class="item-rating">
+                <span class="stars">★</span>
+                <span>{{ item.product.rating.rate }}/5</span>
+              </div>
+            </div>
+
+            <div class="item-price">
+              <div class="unit-price">${{ item.product.price | number:'1.2-2' }}</div>
+              <div class="total-price">${{ item.product.price * item.quantity | number:'1.2-2' }}</div>
+            </div>
+
+            <div class="quantity-controls">
+              <button 
+                class="quantity-btn" 
+                (click)="decreaseQuantity(item.product.id)"
+                [disabled]="item.quantity <= 1">
+                −
+              </button>
+              <span class="quantity">{{ item.quantity }}</span>
+              <button 
+                class="quantity-btn" 
+                (click)="increaseQuantity(item.product.id)">
+                +
+              </button>
+            </div>
+
+            <div class="item-actions">
+              <button 
+                class="remove-btn" 
+                (click)="removeItem(item.product.id)"
+                title="ลบสินค้า">
+                🗑️
+              </button>
+            </div>
+          </div>
+        }
+      </div>
+
+      <div class="cart-footer">
+        <div class="cart-summary-section">
+          <div class="summary-row">
+            <span>จำนวนสินค้า:</span>
+            <span>{{ cartService.itemCount }} ชิ้น</span>
+          </div>
+          <div class="summary-row total">
+            <span>รวมทั้งหมด:</span>
+            <span class="total-amount">${{ cartService.total | number:'1.2-2' }}</span>
+          </div>
+        </div>
+
+        <div class="cart-actions">
+          <button 
+            class="clear-btn" 
+            (click)="clearCart()"
+            [disabled]="cartService.items.length === 0">
+            เคลียร์ตะกร้า
+          </button>
+          <button 
+            class="checkout-btn"
+            routerLink="/checkout"
+            [disabled]="cartService.items.length === 0">
+            💳 ชำระเงิน
+          </button>
+        </div>
+      </div>
+    </div>
+  }
+</div>

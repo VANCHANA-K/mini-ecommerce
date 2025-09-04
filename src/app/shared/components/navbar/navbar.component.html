@@ -1,0 +1,51 @@
+<nav class="navbar">
+  <div class="nav-brand">
+    <a routerLink="/" class="brand-link">🛍️ Mini E-Commerce</a>
+  </div>
+  
+  <div class="nav-links">
+    <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+      🏠 <span>Home</span>
+    </a>
+    <a routerLink="/products" routerLinkActive="active">
+      📦 <span>Products</span>
+    </a>
+    <a routerLink="/wishlist" routerLinkActive="active" class="wishlist-link">
+      ❤️ <span>Wishlist</span>
+    </a>
+    <a routerLink="/cart" routerLinkActive="active" class="cart-link">
+      <span class="cart-icon">🛒</span>
+      <span class="cart-text">Cart</span>
+      @if (cartService.itemCount > 0) {
+        <span class="cart-badge">{{ cartService.itemCount }}</span>
+      }
+    </a>
+    
+    <!-- Theme Toggle -->
+    <button class="theme-toggle" (click)="toggleTheme()" title="Toggle Theme">
+      🌗 <span>Theme</span>
+    </button>
+    
+    <!-- Authentication Links -->
+    @if (authService.isLoggedIn$ | async) {
+      <!-- Logged in state -->
+      <a routerLink="/checkout" routerLinkActive="active" class="checkout-link">
+        💳 <span>Checkout</span>
+      </a>
+      <div class="user-menu">
+        <span class="user-welcome">👋 {{ authService.username }}</span>
+        <button class="logout-btn" (click)="logout()">
+          🚪 <span>Logout</span>
+        </button>
+      </div>
+    } @else {
+      <!-- Logged out state -->
+      <a routerLink="/login" routerLinkActive="active" class="auth-link">
+        🔑 <span>Login</span>
+      </a>
+      <a routerLink="/register" routerLinkActive="active" class="auth-link register-link">
+        ✨ <span>Register</span>
+      </a>
+    }
+  </div>
+</nav>

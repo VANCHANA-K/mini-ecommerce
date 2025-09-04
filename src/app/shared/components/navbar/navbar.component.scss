@@ -1,0 +1,241 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background: var(--navbar-bg);
+  color: var(--navbar-text);
+  box-shadow: 0 2px 8px var(--shadow);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+
+  @media (max-width: 768px) {
+    padding: 1rem;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  @media (max-width: 480px) {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 1rem 0.5rem;
+    
+    .nav-brand {
+      text-align: center;
+      margin-bottom: 0.5rem;
+    }
+  }
+}
+
+.nav-brand {
+  .brand-link {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: #60a5fa;
+    }
+  }
+}
+
+.nav-links {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+
+  @media (max-width: 768px) {
+    gap: 1rem;
+  }
+
+  a {
+    color: #d1d5db;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    &:hover {
+      color: white;
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    &.active {
+      color: #60a5fa;
+      background: rgba(96, 165, 250, 0.1);
+    }
+
+    @media (max-width: 768px) {
+      padding: 0.5rem;
+      
+      .cart-text,
+      span:not(.cart-icon):not(.cart-badge) {
+        display: none;
+      }
+    }
+  }
+}
+
+.cart-link {
+  position: relative;
+  
+  .cart-badge {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background: #ef4444;
+    color: white;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    animation: bounce 0.5s ease-in-out;
+    border: 2px solid #1f2937;
+
+    @media (max-width: 768px) {
+      top: -6px;
+      right: -6px;
+      width: 18px;
+      height: 18px;
+      font-size: 0.625rem;
+    }
+  }
+}
+
+@keyframes bounce {
+  0%, 20%, 53%, 80%, 100% {
+    transform: translate3d(0, 0, 0);
+  }
+  40%, 43% {
+    transform: translate3d(0, -8px, 0);
+  }
+  70% {
+    transform: translate3d(0, -4px, 0);
+  }
+  90% {
+    transform: translate3d(0, -2px, 0);
+  }
+}
+
+// Authentication styles
+.nav-links {
+  button {
+    background: none;
+    border: none;
+    color: #d1d5db;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    font-size: inherit;
+    font-family: inherit;
+
+    &:hover {
+      color: white;
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    @media (max-width: 768px) {
+      padding: 0.5rem;
+      
+      span {
+        display: none;
+      }
+    }
+  }
+
+  .user-menu {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    .user-welcome {
+      color: #60a5fa;
+      font-weight: 600;
+      padding: 0.5rem;
+      font-size: 0.875rem;
+
+      @media (max-width: 768px) {
+        display: none;
+      }
+    }
+
+    .logout-btn {
+      background: rgba(239, 68, 68, 0.1);
+      color: #f87171;
+
+      &:hover {
+        background: rgba(239, 68, 68, 0.2);
+        color: #ef4444;
+      }
+    }
+  }
+
+  .auth-link {
+    &.register-link {
+      background: rgba(34, 197, 94, 0.1);
+      color: #4ade80;
+
+      &:hover {
+        background: rgba(34, 197, 94, 0.2);
+        color: #22c55e;
+      }
+
+      &.active {
+        background: rgba(34, 197, 94, 0.2);
+        color: #16a34a;
+      }
+    }
+  }
+
+  .checkout-link {
+    background: rgba(168, 85, 247, 0.1);
+    color: #c084fc;
+
+    &:hover {
+      background: rgba(168, 85, 247, 0.2);
+      color: #a855f7;
+    }
+
+    &.active {
+      background: rgba(168, 85, 247, 0.2);
+      color: #9333ea;
+    }
+  }
+
+  @media (max-width: 768px) {
+    gap: 0.5rem;
+  }
+
+  .theme-toggle {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fbbf24;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.2);
+      color: #f59e0b;
+      transform: scale(1.05);
+    }
+  }
+}

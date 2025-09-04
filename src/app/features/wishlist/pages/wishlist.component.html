@@ -1,0 +1,28 @@
+<div class="wishlist-container">
+  <div class="wishlist-header">
+    <h1>❤️ รายการโปรด</h1>
+    <div class="item-count" *ngIf="itemCount > 0">
+      {{ itemCount }} รายการ
+    </div>
+  </div>
+
+  @if (wishlistItems.length === 0) {
+    <div class="empty-wishlist">
+      <div class="empty-icon">💔</div>
+      <h2>ยังไม่มีสินค้าที่ถูกใจ</h2>
+      <p>ไปหาสินค้าที่ชอบแล้วกดปุ่ม ❤️ กันเถอะ!</p>
+      <button class="browse-btn" routerLink="/products">
+        🛍️ เริ่มช้อปปิ้ง
+      </button>
+    </div>
+  } @else {
+    <div class="wishlist-grid">
+      @for (product of wishlistItems; track product.id) {
+        <app-product-card 
+          [product]="product"
+          class="wishlist-item">
+        </app-product-card>
+      }
+    </div>
+  }
+</div>

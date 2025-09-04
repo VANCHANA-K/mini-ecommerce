@@ -1,0 +1,46 @@
+<div class="checkout-container">
+  <h2>💳 Checkout</h2>
+
+  <form [formGroup]="form" (ngSubmit)="placeOrder()">
+    <div class="form-section">
+      <label>
+        ชื่อผู้รับ
+        <input formControlName="name" type="text" placeholder="กรุณากรอกชื่อผู้รับ" />
+      </label>
+
+      <label>
+        ที่อยู่
+        <textarea formControlName="address" placeholder="กรุณากรอกที่อยู่สำหรับจัดส่ง" rows="3"></textarea>
+      </label>
+
+      <label>
+        เบอร์โทร
+        <input formControlName="phone" type="tel" placeholder="กรุณากรอกเบอร์โทรศัพท์" />
+      </label>
+    </div>
+
+    <div class="cart-review">
+      <h3>📋 สินค้าในตะกร้า:</h3>
+      <div class="cart-items">
+        <div class="cart-item" *ngFor="let item of cart.items">
+          <img [src]="item.product.image" [alt]="item.product.title" class="item-image" />
+          <div class="item-details">
+            <h4>{{ item.product.title }}</h4>
+            <p class="item-quantity">จำนวน: {{ item.quantity }}</p>
+          </div>
+          <div class="item-price">${{ (item.product.price * item.quantity) | number:'1.2-2' }}</div>
+        </div>
+      </div>
+      <div class="total-section">
+        <p class="total">รวมทั้งหมด: ${{ cart.total | number:'1.2-2' }}</p>
+      </div>
+    </div>
+
+    <button 
+      type="submit" 
+      class="btn-checkout"
+      [disabled]="form.invalid || cart.items.length === 0">
+      🛒 ยืนยันการสั่งซื้อ
+    </button>
+  </form>
+</div>

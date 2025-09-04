@@ -1,0 +1,224 @@
+// 🎨 Global Theme Styles
+@use 'variables' as *;
+@use 'mixins' as *;
+
+// 🌈 CSS Custom Properties for Theme Switching
+:root {
+  --bg: #{$gray-50};
+  --bg-secondary: #{$white};
+  --text: #{$gray-800};
+  --text-secondary: #{$gray-600};
+  --text-muted: #{$gray-500};
+  --card-bg: #{$white};
+  --border-color: #{$gray-200};
+  --navbar-bg: #{$gray-800};
+  --navbar-text: #{$white};
+  --primary: #{$primary};
+  --primary-hover: #{$primary-dark};
+  --primary-alpha: rgba(0, 123, 255, 0.1);
+  --danger: #{$danger};
+  --success: #{$success-theme};
+  --success-hover: #059669;
+  --success-alpha: rgba(34, 197, 94, 0.15);
+  --warning: #{$warning-theme};
+  --info: #{$info-theme};
+  --shadow: rgba(0, 0, 0, 0.1);
+  --shadow-hover: rgba(0, 0, 0, 0.15);
+  
+  // Hero section
+  --hero-bg: linear-gradient(135deg, #{$gray-100} 0%, #{$white} 100%);
+  --hero-text: #{$gray-900};
+}
+
+// 🌙 Dark Theme
+.dark {
+  --bg: #121212;
+  --bg-secondary: #1e1e1e;
+  --text: #e0e0e0;
+  --text-secondary: #b0b0b0;
+  --text-muted: #888888;
+  --card-bg: #2d2d2d;
+  --border-color: #404040;
+  --navbar-bg: #0f0f0f;
+  --navbar-text: #ffffff;
+  --primary: #3399ff;
+  --primary-hover: #2288ee;
+  --primary-alpha: rgba(51, 153, 255, 0.1);
+  --danger: #ff6666;
+  --success: #4caf50;
+  --success-hover: #45a049;
+  --success-alpha: rgba(76, 175, 80, 0.15);
+  --warning: #ff9800;
+  --info: #2196f3;
+  --shadow: rgba(0, 0, 0, 0.3);
+  --shadow-hover: rgba(0, 0, 0, 0.4);
+  
+  // Hero section
+  --hero-bg: linear-gradient(135deg, #1e1e1e 0%, #2d2d2d 100%);
+  --hero-text: #e0e0e0;
+}
+
+// 🌐 Global Styles
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: $font-family-primary;
+  font-size: $font-size-base;
+  line-height: 1.6;
+  color: var(--text);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+// 📝 Typography
+h1, h2, h3, h4, h5, h6 {
+  margin: 0 0 $space-md 0;
+  font-family: $font-family-heading;
+  line-height: 1.3;
+  color: $gray-900;
+}
+
+h1 { @include heading-1; }
+h2 { @include heading-2; }
+h3 { @include heading-3; }
+
+p {
+  margin: 0 0 $space-md 0;
+  color: $gray-700;
+}
+
+a {
+  color: $primary-color;
+  text-decoration: none;
+  transition: color $transition-fast;
+  
+  &:hover {
+    color: $primary-dark;
+  }
+}
+
+// 🎯 Utility Classes
+.container {
+  @include container;
+}
+
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+
+.font-medium { font-weight: $font-weight-medium; }
+.font-semibold { font-weight: $font-weight-semibold; }
+.font-bold { font-weight: $font-weight-bold; }
+
+.text-primary { color: $primary-color; }
+.text-secondary { color: $secondary-color; }
+.text-success { color: $success; }
+.text-warning { color: $warning; }
+.text-error { color: $error; }
+
+// 📏 Spacing Utilities
+.mt-0 { margin-top: 0; }
+.mt-1 { margin-top: $space-xs; }
+.mt-2 { margin-top: $space-sm; }
+.mt-4 { margin-top: $space-md; }
+.mt-6 { margin-top: $space-lg; }
+.mt-8 { margin-top: $space-xl; }
+.mt-12 { margin-top: $space-2xl; }
+.mt-16 { margin-top: $space-3xl; }
+
+.mb-0 { margin-bottom: 0; }
+.mb-1 { margin-bottom: $space-xs; }
+.mb-2 { margin-bottom: $space-sm; }
+.mb-4 { margin-bottom: $space-md; }
+.mb-6 { margin-bottom: $space-lg; }
+.mb-8 { margin-bottom: $space-xl; }
+.mb-12 { margin-bottom: $space-2xl; }
+.mb-16 { margin-bottom: $space-3xl; }
+
+// 🎨 Button Classes
+.btn {
+  @include btn-base;
+}
+
+.btn-primary {
+  @include btn-primary;
+}
+
+.btn-secondary {
+  @include btn-secondary;
+}
+
+.btn-outline {
+  @include btn-outline;
+}
+
+.btn-sm {
+  padding: $space-xs $space-md;
+  font-size: $font-size-sm;
+}
+
+.btn-lg {
+  padding: $space-md $space-xl;
+  font-size: $font-size-lg;
+}
+
+// 🃏 Card Classes
+.card {
+  @include card;
+  padding: $space-lg;
+}
+
+.card-header {
+  padding: $space-lg $space-lg $space-md $space-lg;
+  border-bottom: 1px solid $gray-200;
+}
+
+.card-body {
+  padding: $space-lg;
+}
+
+.card-footer {
+  padding: $space-md $space-lg $space-lg $space-lg;
+  border-top: 1px solid $gray-200;
+}
+
+// 🎭 Animation Classes
+.fade-in-up {
+  @include fade-in-up;
+}
+
+.fade-in-up-delay-1 {
+  @include fade-in-up($delay: 0.1s);
+}
+
+.fade-in-up-delay-2 {
+  @include fade-in-up($delay: 0.2s);
+}
+
+.fade-in-up-delay-3 {
+  @include fade-in-up($delay: 0.3s);
+}
+
+// 📱 Responsive Utilities
+@include breakpoint('md') {
+  .md\:text-center { text-align: center; }
+  .md\:text-left { text-align: left; }
+  .md\:text-right { text-align: right; }
+}
+
+@include breakpoint('lg') {
+  .lg\:text-center { text-align: center; }
+  .lg\:text-left { text-align: left; }
+  .lg\:text-right { text-align: right; }
+}

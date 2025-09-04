@@ -1,0 +1,149 @@
+<div class="register-container">
+  <div class="register-card">
+    <div class="register-header">
+      <h2>🆕 สมัครสมาชิก</h2>
+      <p>สร้างบัญชีใหม่เพื่อเริ่มช้อปปิ้ง</p>
+    </div>
+
+    <div class="success-message" *ngIf="success">
+      <div class="success-icon">✅</div>
+      <h3>สมัครสมาชิกสำเร็จ!</h3>
+      <p>กำลังพาคุณไปหน้าเข้าสู่ระบบ...</p>
+    </div>
+
+    <form [formGroup]="form" (ngSubmit)="submit()" class="register-form" *ngIf="!success">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="firstname">ชื่อ</label>
+          <input 
+            id="firstname"
+            type="text" 
+            formControlName="firstname" 
+            placeholder="กรอกชื่อ"
+            [class.error]="firstname?.invalid && firstname?.touched"
+          />
+          <div class="error-message" *ngIf="firstname?.invalid && firstname?.touched">
+            <span *ngIf="firstname?.errors?.['required']">กรุณากรอกชื่อ</span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="lastname">นามสกุล</label>
+          <input 
+            id="lastname"
+            type="text" 
+            formControlName="lastname" 
+            placeholder="กรอกนามสกุล"
+            [class.error]="lastname?.invalid && lastname?.touched"
+          />
+          <div class="error-message" *ngIf="lastname?.invalid && lastname?.touched">
+            <span *ngIf="lastname?.errors?.['required']">กรุณากรอกนามสกุล</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="email">อีเมล</label>
+        <input 
+          id="email"
+          type="email" 
+          formControlName="email" 
+          placeholder="กรอกอีเมล"
+          [class.error]="email?.invalid && email?.touched"
+        />
+        <div class="error-message" *ngIf="email?.invalid && email?.touched">
+          <span *ngIf="email?.errors?.['required']">กรุณากรอกอีเมล</span>
+          <span *ngIf="email?.errors?.['email']">รูปแบบอีเมลไม่ถูกต้อง</span>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="username">ชื่อผู้ใช้</label>
+          <input 
+            id="username"
+            type="text" 
+            formControlName="username" 
+            placeholder="กรอกชื่อผู้ใช้"
+            [class.error]="username?.invalid && username?.touched"
+          />
+          <div class="error-message" *ngIf="username?.invalid && username?.touched">
+            <span *ngIf="username?.errors?.['required']">กรุณากรอกชื่อผู้ใช้</span>
+            <span *ngIf="username?.errors?.['minlength']">ชื่อผู้ใช้ต้องมีอย่างน้อย 3 ตัวอักษร</span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="password">รหัสผ่าน</label>
+          <input 
+            id="password"
+            type="password" 
+            formControlName="password" 
+            placeholder="กรอกรหัสผ่าน"
+            [class.error]="password?.invalid && password?.touched"
+          />
+          <div class="error-message" *ngIf="password?.invalid && password?.touched">
+            <span *ngIf="password?.errors?.['required']">กรุณากรอกรหัสผ่าน</span>
+            <span *ngIf="password?.errors?.['minlength']">รหัสผ่านต้องมีอย่างน้อย 6 ตัวอักษร</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="phone">เบอร์โทรศัพท์</label>
+        <input 
+          id="phone"
+          type="tel" 
+          formControlName="phone" 
+          placeholder="กรอกเบอร์โทรศัพท์"
+          [class.error]="phone?.invalid && phone?.touched"
+        />
+        <div class="error-message" *ngIf="phone?.invalid && phone?.touched">
+          <span *ngIf="phone?.errors?.['required']">กรุณากรอกเบอร์โทรศัพท์</span>
+        </div>
+      </div>
+
+      <div class="address-section">
+        <h3>📍 ที่อยู่</h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="city">เมือง</label>
+            <input id="city" type="text" formControlName="city" />
+          </div>
+          <div class="form-group">
+            <label for="zipcode">รหัสไปรษณีย์</label>
+            <input id="zipcode" type="text" formControlName="zipcode" />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="street">ถนน</label>
+            <input id="street" type="text" formControlName="street" />
+          </div>
+          <div class="form-group">
+            <label for="number">บ้านเลขที่</label>
+            <input id="number" type="number" formControlName="number" />
+          </div>
+        </div>
+      </div>
+
+      <button 
+        type="submit" 
+        class="btn-register"
+        [disabled]="loading"
+      >
+        <span *ngIf="!loading">สมัครสมาชิก</span>
+        <span *ngIf="loading">🔄 กำลังสมัครสมาชิก...</span>
+      </button>
+
+      <div class="error-alert" *ngIf="error">
+        ❌ {{ error }}
+      </div>
+    </form>
+
+    <div class="register-footer" *ngIf="!success">
+      <p>มีบัญชีอยู่แล้ว? <a routerLink="/login">เข้าสู่ระบบ</a></p>
+      <p><a routerLink="/">← กลับหน้าหลัก</a></p>
+    </div>
+  </div>
+</div>
