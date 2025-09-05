@@ -1,0 +1,15 @@
+<div class="flash-sale">
+  <div class="flash-header">
+    <h2>Flash Sale</h2>
+    <div class="countdown">
+      {{ time.hours }}:{{ time.minutes }}:{{ time.seconds }}
+    </div>
+  </div>
+  <div class="flash-grid">
+    <div class="flash-card" *ngFor="let product of products">
+      <img [src]="product.image" [alt]="product.title" />
+      <h3>{{ product.title }}</h3>
+      <p class="price">\${{ product.price }}</p>
+    </div>
+  </div>
+</div>

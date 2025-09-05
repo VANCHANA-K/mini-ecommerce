@@ -1,67 +1,39 @@
 .home-container {
-  min-height: 100vh;
   background: var(--bg);
-  transition: background-color 0.3s ease;
+  min-height: 100vh;
 }
 
-.hero-section {
+.promo-banner {
   background: var(--hero-bg);
   color: var(--hero-text);
-  padding: 4rem 2rem;
   text-align: center;
-  min-height: 60vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.3s ease;
-  border-bottom: 1px solid var(--border-color);
-}
+  padding: 4rem 2rem;
 
-.hero-content {
-  max-width: 800px;
-  margin: 0 auto;
-}
-
-.hero-title {
-  font-size: 3.5rem;
-  font-weight: 700;
-  margin-bottom: 1rem;
-  color: var(--hero-text);
-  text-shadow: 2px 2px 4px var(--shadow);
-  animation: fadeInUp 1s ease-out;
-  transition: all 0.3s ease;
-
-  @media (max-width: 768px) {
-    font-size: 2.5rem;
+  .promo-content {
+    max-width: 800px;
+    margin: 0 auto;
   }
 
-  @media (max-width: 480px) {
-    font-size: 2rem;
+  h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+
+  p {
+    font-size: 1.25rem;
+    margin-bottom: 2rem;
+  }
+
+  .promo-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
   }
 }
 
-.hero-subtitle {
-  font-size: 1.25rem;
-  margin-bottom: 2rem;
-  color: var(--hero-text);
-  opacity: 0.8;
-  animation: fadeInUp 1s ease-out 0.2s both;
-  transition: all 0.3s ease;
-
-  @media (max-width: 768px) {
-    font-size: 1.1rem;
-  }
-}
-
-.hero-actions {
-  display: flex;
-  gap: 1rem;
-  justify-content: center;
-  flex-wrap: wrap;
-  animation: fadeInUp 1s ease-out 0.4s both;
-}
-
-.btn-primary, .btn-secondary {
+.btn-primary,
+.btn-secondary {
   padding: 0.875rem 2rem;
   border: none;
   border-radius: 50px;
@@ -76,13 +48,11 @@
 
 .btn-primary {
   background: #ff6b6b;
-  color: white;
-  box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+  color: #fff;
 
   &:hover {
     background: #ff5252;
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(255, 107, 107, 0.4);
   }
 }
 
@@ -90,7 +60,6 @@
   background: transparent;
   color: var(--hero-text);
   border: 2px solid var(--hero-text);
-  transition: all 0.3s ease;
 
   &:hover {
     background: var(--hero-text);
@@ -99,102 +68,60 @@
   }
 }
 
-.features-section {
-  padding: 4rem 2rem;
-  background: var(--bg-secondary);
-  transition: background-color 0.3s ease;
+.flash-sale-section,
+.products-section,
+.store-list-section {
+  padding: 2rem 0;
 }
 
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.section-title {
-  text-align: center;
-  font-size: 2.5rem;
-  font-weight: 700;
-  color: var(--text);
-  margin-bottom: 3rem;
-  transition: color 0.3s ease;
-
-  @media (max-width: 768px) {
-    font-size: 2rem;
-  }
-}
-
-.features-grid {
+::ng-deep .flash-grid,
+::ng-deep .grid,
+::ng-deep .stores {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 2rem;
-  margin-top: 2rem;
+  gap: 1rem;
 }
 
-.feature-card {
+::ng-deep .flash-grid,
+::ng-deep .grid {
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+}
+
+::ng-deep .stores {
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+::ng-deep .flash-card,
+::ng-deep .product-card,
+::ng-deep .store-banner {
   background: var(--card-bg);
-  padding: 2rem;
-  border-radius: 16px;
-  text-align: center;
   border: 1px solid var(--border-color);
-  box-shadow: 0 4px 20px var(--shadow);
-  transition: all 0.3s ease;
-
-  &:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 8px 30px var(--shadow-hover);
-  }
-
-  h3 {
-    color: var(--text);
-    font-size: 1.25rem;
-    font-weight: 600;
-    margin: 1rem 0 0.5rem 0;
-    transition: color 0.3s ease;
-  }
-
-  p {
-    color: var(--text-secondary);
-    font-size: 0.95rem;
-    line-height: 1.5;
-    margin: 0;
-    transition: color 0.3s ease;
-  }
+  border-radius: 8px;
+  text-align: center;
+  transition: transform 0.3s ease;
 }
 
-.feature-icon {
-  font-size: 3rem;
-  margin-bottom: 1rem;
-  display: block;
+::ng-deep .flash-card:hover,
+::ng-deep .product-card:hover,
+::ng-deep .store-banner:hover {
+  transform: translateY(-4px);
+}
+
+::ng-deep .countdown {
+  font-size: 1.25rem;
+  font-weight: 600;
   color: var(--primary);
-  transition: color 0.3s ease;
-}
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
 
 @media (max-width: 768px) {
-  .hero-section {
+  .promo-banner {
     padding: 3rem 1rem;
-  }
-  
-  .features-section {
-    padding: 3rem 1rem;
-  }
-  
-  .hero-actions {
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .btn-primary, .btn-secondary {
-    width: 200px;
+
+    h1 {
+      font-size: 2.25rem;
+    }
+
+    p {
+      font-size: 1.1rem;
+    }
   }
 }

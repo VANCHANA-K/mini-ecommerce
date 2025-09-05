@@ -1,0 +1,38 @@
+.store-list {
+  padding: 2rem 0;
+
+  h2 {
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+
+  .stores {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+  }
+
+  .store-banner {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    overflow: hidden;
+    text-align: center;
+    transition: transform 0.3s ease;
+
+    img {
+      width: 100%;
+      height: auto;
+    }
+
+    span {
+      display: block;
+      padding: 0.5rem;
+      font-weight: 600;
+    }
+
+    &:hover {
+      transform: translateY(-4px);
+    }
+  }
+}
