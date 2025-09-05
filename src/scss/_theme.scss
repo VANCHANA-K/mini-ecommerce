@@ -14,8 +14,17 @@
   --navbar-bg: #{$gray-800};
   --navbar-text: #{$white};
   --primary: #{$primary};
+  --primary-light: #{$primary-light};
   --primary-hover: #{$primary-dark};
   --primary-alpha: rgba(0, 123, 255, 0.1);
+  --secondary: #{$secondary-color};
+  --secondary-light: #{$secondary-light};
+  --secondary-dark: #{$secondary-dark};
+  --accent: #{$accent-color};
+  --accent-light: #{$accent-light};
+  --gradient-primary: #{$gradient-primary};
+  --gradient-secondary: #{$gradient-secondary};
+  --gradient-accent: #{$gradient-accent};
   --danger: #{$danger};
   --success: #{$success-theme};
   --success-hover: #059669;
@@ -24,7 +33,29 @@
   --info: #{$info-theme};
   --shadow: rgba(0, 0, 0, 0.1);
   --shadow-hover: rgba(0, 0, 0, 0.15);
-  
+
+  // Spacing scale
+  --space-xs: #{$space-xs};
+  --space-sm: #{$space-sm};
+  --space-md: #{$space-md};
+  --space-lg: #{$space-lg};
+  --space-xl: #{$space-xl};
+  --space-2xl: #{$space-2xl};
+  --space-3xl: #{$space-3xl};
+  --space-4xl: #{$space-4xl};
+  --space-5xl: #{$space-5xl};
+
+  // Typography scale
+  --font-size-xs: #{$font-size-xs};
+  --font-size-sm: #{$font-size-sm};
+  --font-size-base: #{$font-size-base};
+  --font-size-lg: #{$font-size-lg};
+  --font-size-xl: #{$font-size-xl};
+  --font-size-2xl: #{$font-size-2xl};
+  --font-size-3xl: #{$font-size-3xl};
+  --font-size-4xl: #{$font-size-4xl};
+  --font-size-5xl: #{$font-size-5xl};
+
   // Hero section
   --hero-bg: linear-gradient(135deg, #{$gray-100} 0%, #{$white} 100%);
   --hero-text: #{$gray-900};
@@ -42,8 +73,17 @@
   --navbar-bg: #0f0f0f;
   --navbar-text: #ffffff;
   --primary: #3399ff;
+  --primary-light: #4dabf7;
   --primary-hover: #2288ee;
   --primary-alpha: rgba(51, 153, 255, 0.1);
+  --secondary: #ff6b6b;
+  --secondary-light: #ff8e8e;
+  --secondary-dark: #ff5252;
+  --accent: #667eea;
+  --accent-light: #8090ff;
+  --gradient-primary: linear-gradient(135deg, #3399ff, #2288ee);
+  --gradient-secondary: linear-gradient(135deg, #ff7b7b, #ff5252);
+  --gradient-accent: linear-gradient(135deg, #667eea, #5a67d8);
   --danger: #ff6666;
   --success: #4caf50;
   --success-hover: #45a049;
@@ -64,7 +104,7 @@
 }
 
 html {
-  font-size: 16px;
+  font-size: var(--font-size-base);
   scroll-behavior: smooth;
 }
 
@@ -72,7 +112,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: $font-family-primary;
-  font-size: $font-size-base;
+  font-size: var(--font-size-base);
   line-height: 1.6;
   color: var(--text);
   background: var(--bg);
