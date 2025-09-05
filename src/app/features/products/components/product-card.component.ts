@@ -13,7 +13,12 @@ import { WishlistService } from '../../../shared/services/wishlist.service';
 })
 export class ProductCardComponent {
   @Input({ required: true }) product!: Product;
-  
+  @Input() discount?: number;
+  @Input() badge?: string;
+  @Input() wishlist?: boolean;
+
+  stars = Array(5);
+
   private cartService = inject(CartService);
   private wishlistService = inject(WishlistService);
 
@@ -30,10 +35,14 @@ export class ProductCardComponent {
   }
 
   toggleFavorite(): void {
-    this.wishlistService.toggle(this.product);
+    if (this.wishlist !== undefined) {
+      this.wishlist = !this.wishlist;
+    } else {
+      this.wishlistService.toggle(this.product);
+    }
   }
 
   get isFavorite(): boolean {
-    return this.wishlistService.isFavorite(this.product.id);
+    return this.wishlist ?? this.wishlistService.isFavorite(this.product.id);
   }
 }
