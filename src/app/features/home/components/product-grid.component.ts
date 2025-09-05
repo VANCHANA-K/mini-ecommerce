@@ -21,25 +21,25 @@ export class ProductGridComponent {
       id: 1,
       title: 'Phone',
       price: 499,
-      image: 'https://via.placeholder.com/150',
+      image: '/images/products/prod-1.svg',
     },
     {
       id: 2,
       title: 'Laptop',
       price: 999,
-      image: 'https://via.placeholder.com/150',
+      image: '/images/products/prod-2.svg',
     },
     {
       id: 3,
       title: 'Camera',
       price: 299,
-      image: 'https://via.placeholder.com/150',
+      image: '/images/products/prod-3.svg',
     },
     {
       id: 4,
       title: 'Tablet',
       price: 199,
-      image: 'https://via.placeholder.com/150',
+      image: '/images/products/prod-4.svg',
     },
   ];
 }

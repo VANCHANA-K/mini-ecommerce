@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 interface FlashProduct {
@@ -21,31 +21,32 @@ export class FlashSaleComponent implements OnInit, OnDestroy {
       id: 1,
       title: 'Sneakers',
       price: 39.99,
-      image: 'https://via.placeholder.com/150',
+      image: '/images/products/flash-1.svg',
     },
     {
       id: 2,
       title: 'Headphones',
       price: 19.99,
-      image: 'https://via.placeholder.com/150',
+      image: '/images/products/flash-2.svg',
     },
     {
       id: 3,
       title: 'Watch',
       price: 59.99,
-      image: 'https://via.placeholder.com/150',
+      image: '/images/products/flash-3.svg',
     },
     {
       id: 4,
       title: 'Backpack',
       price: 29.99,
-      image: 'https://via.placeholder.com/150',
+      image: '/images/products/flash-4.svg',
     },
   ];
 
   private endTime = Date.now() + 3600 * 1000;
   time = { hours: '00', minutes: '00', seconds: '00' };
   private intervalId?: number;
+  @ViewChild('rail', { static: true }) rail!: ElementRef<HTMLDivElement>;
 
   ngOnInit(): void {
     this.updateTime();
@@ -68,5 +69,12 @@ export class FlashSaleComponent implements OnInit, OnDestroy {
       minutes: m.toString().padStart(2, '0'),
       seconds: s.toString().padStart(2, '0'),
     };
+  }
+
+  scroll(dir: 'prev' | 'next') {
+    const el = this.rail?.nativeElement;
+    if (!el) return;
+    const delta = dir === 'next' ? 320 : -320;
+    el.scrollBy({ left: delta, behavior: 'smooth' });
   }
 }

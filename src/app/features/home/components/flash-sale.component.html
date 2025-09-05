@@ -1,15 +1,26 @@
 <div class="flash-sale">
   <div class="flash-header">
-    <h2>Flash Sale</h2>
-    <div class="countdown">
-      {{ time.hours }}:{{ time.minutes }}:{{ time.seconds }}
+    <div class="left">
+      <h2>Flash Sale</h2>
+      <div class="chips">
+        <span class="chip">{{ time.hours }}</span>
+        <span class="colon">:</span>
+        <span class="chip">{{ time.minutes }}</span>
+        <span class="colon">:</span>
+        <span class="chip">{{ time.seconds }}</span>
+      </div>
+    </div>
+    <div class="controls">
+      <button class="nav" (click)="scroll('prev')">‹</button>
+      <button class="nav" (click)="scroll('next')">›</button>
     </div>
   </div>
-  <div class="flash-grid">
+  <div #rail class="rail" tabindex="0">
     <div class="flash-card" *ngFor="let product of products">
       <img [src]="product.image" [alt]="product.title" />
       <h3>{{ product.title }}</h3>
       <p class="price">\${{ product.price }}</p>
+      <div class="progress"><span style="width: 60%"></span></div>
     </div>
   </div>
 </div>

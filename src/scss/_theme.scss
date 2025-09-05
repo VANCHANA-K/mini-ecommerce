@@ -11,8 +11,9 @@
   --text-muted: #{$gray-500};
   --card-bg: #{$white};
   --border-color: #{$gray-200};
-  --navbar-bg: #{$gray-800};
-  --navbar-text: #{$white};
+  // Light header like marketplace UIs
+  --navbar-bg: #{$white};
+  --navbar-text: #{$gray-900};
   --primary: #{$primary};
   --primary-light: #{$primary-light};
   --primary-hover: #{$primary-dark};

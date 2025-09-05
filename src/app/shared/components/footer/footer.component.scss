@@ -1,6 +1,6 @@
 .footer {
-  background: var(--navbar-bg);
-  color: var(--navbar-text);
+  background: #0f172a; /* slate-900 */
+  color: #e5e7eb;
   padding: 2rem 1rem;
   margin-top: 2rem;
 
@@ -17,13 +17,13 @@
   }
 
   a {
-    color: var(--navbar-text);
+    color: #e5e7eb;
     text-decoration: none;
     margin-bottom: 0.5rem;
     display: block;
 
     &:hover {
-      color: var(--primary);
+      color: #93c5fd;
     }
   }
 
@@ -31,28 +31,14 @@
     display: flex;
     gap: 0.5rem;
 
-    a {
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      background: var(--bg-secondary);
-      color: var(--navbar-bg);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: background 0.3s ease, color 0.3s ease;
-
-      &:hover {
-        background: var(--primary);
-        color: #fff;
-      }
-    }
+    a { width: 32px; height: 32px; border-radius: 50%; background: #1f2937; color: #e5e7eb; display: flex; align-items: center; justify-content: center; transition: background .2s ease; }
+    a:hover { background: #334155; }
   }
 
   .footer-bottom {
     text-align: center;
     margin-top: 2rem;
     font-size: 0.875rem;
-    color: var(--text-muted);
+    color: #94a3b8;
   }
 }

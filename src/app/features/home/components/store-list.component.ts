@@ -16,16 +16,8 @@ interface Store {
 })
 export class StoreListComponent {
   stores: Store[] = [
-    { id: 1, name: 'Tech World', image: 'https://via.placeholder.com/300x100' },
-    {
-      id: 2,
-      name: 'Fashion Hub',
-      image: 'https://via.placeholder.com/300x100',
-    },
-    {
-      id: 3,
-      name: 'Gadget Galaxy',
-      image: 'https://via.placeholder.com/300x100',
-    },
+    { id: 1, name: 'Nike Sae Mall', image: '/images/stores/store-1.svg' },
+    { id: 2, name: 'Barudak Disaster Mall', image: '/images/stores/store-2.svg' },
+    { id: 3, name: 'Galaxy Galleria Mall', image: '/images/stores/store-3.svg' },
   ];
 }

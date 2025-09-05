@@ -1,9 +1,25 @@
 <div class="store-list">
   <h2>Best Selling Store</h2>
   <div class="stores">
-    <div class="store-banner" *ngFor="let store of stores">
-      <img [src]="store.image" [alt]="store.name" />
-      <span>{{ store.name }}</span>
+    <div class="left-banner">
+      <div class="banner">
+        <img src="/images/stores/store-1.svg" alt="Mall" />
+        <div class="copy">
+          <h3>BeliBeli Mall</h3>
+          <p>Shop, Explore, Delight and Experience Mall Magic!</p>
+        </div>
+      </div>
+    </div>
+    <div class="mall-grid">
+      <div class="mall-card" *ngFor="let store of stores">
+        <img [src]="store.image" [alt]="store.name" />
+        <div class="mall-meta">
+          <strong>{{ store.name }}</strong>
+          <div class="mini-grid">
+            <span>🧢</span><span>👕</span><span>👟</span><span>🎒</span>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>

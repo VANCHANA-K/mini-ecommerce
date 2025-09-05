@@ -4,7 +4,7 @@
   padding: 1rem 2rem;
   background: var(--navbar-bg);
   color: var(--navbar-text);
-  box-shadow: 0 2px 8px var(--shadow);
+  box-shadow: 0 1px 0 var(--border-color);
   position: sticky;
   top: 0;
   z-index: 100;
@@ -19,14 +19,14 @@
 
 .nav-brand {
   .brand-link {
-    font-size: 1.25rem;
+    font-size: 1.1rem;
     font-weight: 700;
-    color: white;
+    color: var(--text);
     text-decoration: none;
     transition: color 0.3s ease;
 
     &:hover {
-      color: #60a5fa;
+      color: var(--primary);
     }
   }
 }
@@ -40,10 +40,10 @@
     width: 100%;
     max-width: 400px;
     padding: 0.5rem 1rem;
-    border-radius: 8px;
-    border: 1px solid #4b5563;
-    background: var(--navbar-bg);
-    color: var(--navbar-text);
+    border-radius: 999px;
+    border: 1px solid var(--border-color);
+    background: #fff;
+    color: var(--text);
   }
 }
 
@@ -58,7 +58,7 @@
 
   a,
   button {
-    color: #d1d5db;
+    color: var(--text-secondary);
     text-decoration: none;
     font-weight: 500;
     padding: 0.5rem;
@@ -73,35 +73,35 @@
     cursor: pointer;
 
     &:hover {
-      color: white;
-      background: rgba(255, 255, 255, 0.1);
+      color: var(--text);
+      background: rgba(0, 0, 0, 0.04);
     }
 
     &.active {
-      color: #60a5fa;
-      background: rgba(96, 165, 250, 0.1);
+      color: var(--primary);
+      background: rgba(0, 123, 255, 0.08);
     }
   }
 
   .logout-btn {
-    background: rgba(239, 68, 68, 0.1);
-    color: #f87171;
+    background: rgba(239, 68, 68, 0.08);
+    color: #b91c1c;
 
     &:hover {
-      background: rgba(239, 68, 68, 0.2);
-      color: #ef4444;
+      background: rgba(239, 68, 68, 0.15);
+      color: #dc2626;
     }
   }
 
   .theme-toggle {
-    background: rgba(255, 255, 255, 0.1);
-    color: #fbbf24;
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(0, 0, 0, 0.04);
+    color: #f59e0b;
+    border: 1px solid var(--border-color);
 
     &:hover {
-      background: rgba(255, 255, 255, 0.2);
-      color: #f59e0b;
-      transform: scale(1.05);
+      background: rgba(0, 0, 0, 0.06);
+      color: #d97706;
+      transform: scale(1.03);
     }
   }
 }
@@ -125,7 +125,7 @@
     justify-content: center;
     line-height: 1;
     animation: bounce 0.5s ease-in-out;
-    border: 2px solid #1f2937;
+    border: 2px solid #fff;
 
     @media (max-width: 768px) {
       top: -6px;
@@ -157,4 +157,3 @@
     transform: translate3d(0, -2px, 0);
   }
 }
-

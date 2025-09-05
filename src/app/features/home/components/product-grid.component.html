@@ -1,9 +1,22 @@
 <div class="product-grid">
-  <h2>Today's For You</h2>
+  <div class="header">
+    <h2>Todays For You!</h2>
+    <div class="filters">
+      <button class="pill is-active">Best Seller</button>
+      <button class="pill">Keep Stylish</button>
+      <button class="pill">Special Discount</button>
+      <button class="pill">Official Store</button>
+      <button class="pill">Coveted Product</button>
+    </div>
+  </div>
   <div class="grid">
     <div class="product-card" *ngFor="let product of products">
       <img [src]="product.image" [alt]="product.title" />
       <h3>{{ product.title }}</h3>
+      <div class="meta">
+        <span class="rating">⭐ 4.6</span>
+        <span class="sold">• 1.2k Sold</span>
+      </div>
       <p class="price">\${{ product.price }}</p>
     </div>
   </div>

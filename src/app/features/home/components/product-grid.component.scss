@@ -1,38 +1,47 @@
 .product-grid {
   padding: 2rem 0;
 
-  h2 {
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     margin-bottom: 1rem;
-    text-align: center;
+    flex-wrap: wrap;
+    gap: .75rem;
   }
+
+  .filters { display: flex; gap: .5rem; overflow-x: auto; }
+  .pill {
+    padding: .4rem .75rem;
+    border: 1px solid var(--border-color);
+    background: #fff;
+    border-radius: 999px;
+    font-size: .9rem;
+    white-space: nowrap;
+    cursor: pointer;
+  }
+  .pill.is-active { background: rgba(0,123,255,.08); color: var(--primary); border-color: rgba(0,123,255,.25); }
 
   .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
     gap: 1rem;
   }
 
   .product-card {
     background: var(--card-bg);
     border: 1px solid var(--border-color);
-    border-radius: 8px;
+    border-radius: 12px;
     padding: 1rem;
-    text-align: center;
-    transition: transform 0.3s ease;
+    text-align: left;
+    transition: transform 0.2s ease;
+    box-shadow: 0 1px 2px rgba(0,0,0,.04);
 
-    img {
-      width: 100%;
-      height: auto;
-      margin-bottom: 0.5rem;
-    }
+    img { width: 100%; height: auto; border-radius: 8px; margin-bottom: 0.5rem; }
+    &:hover { transform: translateY(-3px); }
 
-    &:hover {
-      transform: translateY(-4px);
-    }
-
-    .price {
-      color: var(--primary);
-      font-weight: 600;
-    }
+    h3 { font-size: .95rem; margin: .25rem 0; }
+    .meta { color: var(--text-muted); font-size: .85rem; margin-bottom: .25rem; }
+    .price { color: var(--text); font-weight: 700; }
   }
 }
