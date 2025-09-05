@@ -2,49 +2,46 @@
   <div class="nav-brand">
     <a routerLink="/" class="brand-link">🛍️ Mini E-Commerce</a>
   </div>
-  
+
+  <div class="nav-search">
+    <input
+      type="text"
+      class="search-input"
+      placeholder="Search products..."
+      [formControl]="searchControl"
+    />
+  </div>
+
   <div class="nav-links">
     <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-      🏠 <span>Home</span>
+      🏠 <span class="link-text">Home</span>
     </a>
     <a routerLink="/products" routerLinkActive="active">
-      📦 <span>Products</span>
+      📦 <span class="link-text">Products</span>
     </a>
-    <a routerLink="/wishlist" routerLinkActive="active" class="wishlist-link">
-      ❤️ <span>Wishlist</span>
+    <a routerLink="/wishlist" routerLinkActive="active" class="icon-link" title="Wishlist">
+      ❤️ <span class="link-text">Wishlist</span>
     </a>
-    <a routerLink="/cart" routerLinkActive="active" class="cart-link">
+    <a routerLink="/cart" routerLinkActive="active" class="icon-link cart-link" title="Cart">
       <span class="cart-icon">🛒</span>
-      <span class="cart-text">Cart</span>
+      <span class="link-text">Cart</span>
       @if (cartService.itemCount > 0) {
         <span class="cart-badge">{{ cartService.itemCount }}</span>
       }
     </a>
-    
-    <!-- Theme Toggle -->
     <button class="theme-toggle" (click)="toggleTheme()" title="Toggle Theme">
-      🌗 <span>Theme</span>
+      🌗 <span class="link-text">Theme</span>
     </button>
-    
-    <!-- Authentication Links -->
     @if (authService.isLoggedIn$ | async) {
-      <!-- Logged in state -->
-      <a routerLink="/checkout" routerLinkActive="active" class="checkout-link">
-        💳 <span>Checkout</span>
+      <a routerLink="/profile" routerLinkActive="active" class="icon-link" title="Profile">
+        👤 <span class="link-text">Profile</span>
       </a>
-      <div class="user-menu">
-        <span class="user-welcome">👋 {{ authService.username }}</span>
-        <button class="logout-btn" (click)="logout()">
-          🚪 <span>Logout</span>
-        </button>
-      </div>
+      <button class="logout-btn" (click)="logout()" title="Logout">
+        🚪 <span class="link-text">Logout</span>
+      </button>
     } @else {
-      <!-- Logged out state -->
-      <a routerLink="/login" routerLinkActive="active" class="auth-link">
-        🔑 <span>Login</span>
-      </a>
-      <a routerLink="/register" routerLinkActive="active" class="auth-link register-link">
-        ✨ <span>Register</span>
+      <a routerLink="/login" routerLinkActive="active" class="icon-link" title="Login">
+        👤 <span class="link-text">Login</span>
       </a>
     }
   </div>
