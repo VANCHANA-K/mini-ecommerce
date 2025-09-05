@@ -4,11 +4,13 @@ import { CommonModule } from '@angular/common';
 import { CartService } from '../../services/cart.service';
 import { AuthService } from '../../../core/auth/auth.service';
 import { Router } from '@angular/router';
+import { FormControl, ReactiveFormsModule } from '@angular/forms';
+import { debounceTime } from 'rxjs';
 
 @Component({
   standalone: true,
   selector: 'app-navbar',
-  imports: [CommonModule, RouterLink, RouterLinkActive],
+  imports: [CommonModule, RouterLink, RouterLinkActive, ReactiveFormsModule],
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss']
 })
@@ -16,6 +18,7 @@ export class NavbarComponent implements OnInit {
   cartService = inject(CartService);
   authService = inject(AuthService);
   router = inject(Router);
+  searchControl = new FormControl('', { nonNullable: true });
 
   logout() {
     this.authService.logout();
@@ -35,5 +38,12 @@ export class NavbarComponent implements OnInit {
     if (savedTheme === 'dark') {
       document.body.classList.add('dark');
     }
+
+    // Emit search queries to product listings
+    this.searchControl.valueChanges
+      .pipe(debounceTime(300))
+      .subscribe(query => {
+        this.router.navigate(['/products'], { queryParams: { q: query } });
+      });
   }
 }

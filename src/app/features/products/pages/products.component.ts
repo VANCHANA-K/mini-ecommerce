@@ -2,10 +2,11 @@ import { Component, OnInit, inject, signal, computed } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { toSignal } from '@angular/core/rxjs-interop';
-import { combineLatest, startWith } from 'rxjs';
+import { startWith } from 'rxjs';
 import { Product } from '../models/product.model';
 import { ProductService } from '../services/product.service';
 import { ProductCardComponent } from '../components/product-card.component';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   standalone: true,
@@ -16,6 +17,7 @@ import { ProductCardComponent } from '../components/product-card.component';
 })
 export class ProductsComponent implements OnInit {
   private productService = inject(ProductService);
+  private route = inject(ActivatedRoute);
   
   allProducts = signal<Product[]>([]);
   categories = signal<string[]>([]);
@@ -42,6 +44,12 @@ export class ProductsComponent implements OnInit {
   ngOnInit(): void {
     this.loadProducts();
     this.loadCategories();
+
+    // Listen for search query from the navbar
+    this.route.queryParamMap.subscribe(params => {
+      const q = params.get('q') ?? '';
+      this.searchControl.setValue(q);
+    });
   }
 
   loadProducts(): void {
